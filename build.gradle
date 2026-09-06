@@ -82,7 +82,8 @@ configurations {
 }
 
 dependencies {
-    implementation('com.manticore-projects.jsqlformatter:jsqlparser:+'){ changing = true }
+    // releases must pin a jsqlparser release (snapshot deps get pruned from the central snapshots repo)
+    implementation("com.manticore-projects.jsqlformatter:jsqlparser:${System.getenv('RELEASE') ? 'latest.release' : '+'}"){ changing = true }
 
     //for JSON (de)serialization
     implementation 'org.json:json:+'
